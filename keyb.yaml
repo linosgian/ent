@@ -1,0 +1,327 @@
+units:
+  # Constants
+  choc_cap_x: 17.5
+  choc_cap_y: 16.5
+  spread: 20
+
+  choc_plate_thickness: 1.2
+  mx_plate_thickness: 1.5
+points:
+  zones:
+    matrix:
+      columns:
+        pinky:
+          key:
+            origin: [0, -17]
+            spread: spread
+          rows:
+            bottom:
+              bind: [5, 0, 0, 1]
+              column_net: B6
+            home:
+              bind: [0, 12, 0, 1]
+              column_net: F0
+            top:
+              bind: [0, 8, 5, 1]
+              column_net: F1
+        ring:
+          key:
+            spread: spread
+            stagger: 12
+            origin: [0, -17]
+          rows:
+            bottom:
+              bind: [0, 0, 2, 10]
+              column_net: C7
+            home:
+              bind: [5, 0, 5, 0]
+              column_net: D5
+            top:
+              bind: [0, 6, 0, 1]
+              column_net: B7
+        middle:
+          key:
+            shift: [0.2, 0]
+            stagger: 17/3
+            spread: spread
+            origin: [0, -17]
+          rows:
+            bottom:
+              bind: [0, 10, 15, 5]
+              column_net: E6
+            home:
+              bind: 5
+              column_net: D0
+            top:
+              bind: [0, 1, 0, 1]
+              column_net: D7
+        index:
+          key:
+            stagger: -17/3
+            origin: [0, -17]
+            spread: spread
+          rows:
+            bottom:
+              bind: [0, 5, 5, 0]
+              column_net: B4
+            home:
+              bind: [5, 0, 5, 0]
+              column_net: D4
+            top:
+              bind: [0, 0, 0, 6]
+              column_net: D1
+        inner:
+          key:
+            stagger: -17/6
+            origin: [0, -17]
+            spread: spread
+          rows: 
+            bottom:
+              bind: [5, 32, 20, 2]
+              column_net: B5
+            home:
+              bind: [0, 27, 0, 5]
+              column_net: C6
+            top:
+              bind: [0, 27, 5, 5]
+              column_net: D2
+      rows:
+        bottom:
+          padding: 19
+        home:
+          padding: 19
+        top:
+    thumb:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [2,-32]
+      columns:
+        first:
+          key:
+            splay: -1
+          rows:
+            only:
+              column_net: F4
+              bind: [12, 0, 0, 0]
+        second:
+          key:
+            spread: 18
+            splay: -15
+            origin: [-10, -15.5]
+          rows:
+            only:
+              column_net: F5
+              bind: [10,0, 1, 95]
+        third:
+          key:
+            rotate: -30
+            splay: 17
+            origin: [10, 10]
+          rows:
+            only:
+              column_net: F7
+              bind: [4, 1, 1.5, 10]
+      rows:
+        only:
+          padding: 17
+      key:
+        footprints:
+cases:
+  switchplate:
+    - what: outline
+      name: switch_plate
+      extrude: choc_plate_thickness
+outlines:
+  _switch_cutouts:
+    - what: rectangle
+      where: true
+      asym: source
+      size: 14 # Plate cutouts are 14mm * 14mm for both MX and Choc
+      bound: false
+  raw:
+    - what: rectangle
+      where: true
+      bound: true
+      asym: left
+      size: [18,17]
+      corner: 1
+  panel:
+    - what: outline
+      name: raw
+      fillet: 2.5
+  switch_plate:
+    [ raw, -_switch_cutouts]
+pcbs:
+  pcb:
+    outlines:
+      main:
+        outline: panel
+    footprints:
+      trackpad:
+        what: cirque
+        where:
+          shift: [115, 10.5]
+      fpad:
+        what: jumper
+        where:
+          shift: [109, 14]
+          rotate: 90
+        params:
+          from: O1
+          to: GND
+      fpad2:
+        what: jumper
+        where:
+          shift: [111, 14]
+          rotate: 90
+        params:
+          from: O2
+          to: B2
+      fpad3:
+        what: jumper
+        where:
+          shift: [113, 14]
+          rotate: 90
+        params:
+          from: O5
+          to: B3
+      fpad4:
+        what: jumper
+        where:
+          shift: [115, 14]
+          rotate: 90
+        params:
+          from: O4
+          to: GND
+      fpad5:
+        what: jumper
+        where:
+          shift: [117, 14]
+          rotate: 90
+        params:
+          from: O3
+          to: B1
+      pad:
+        what: jumper
+        where:
+          shift: [111, 12]
+          rotate: 90
+        params:
+          from: T1
+          to: GND
+          side: B
+      pad2:
+        what: jumper
+        where:
+          shift: [113, 12]
+          rotate: 90
+        params:
+          from: T2
+          to: VCC
+          side: B
+      pad3:
+        what: jumper
+        where:
+          shift: [115, 12]
+          rotate: 90
+        params:
+          from: T3
+          to: B2
+          side: B
+      pad4:
+        what: jumper
+        where:
+          shift: [117, 12]
+          rotate: 90
+        params:
+          from: T4
+          to: B3
+          side: B
+      trackpad_headers:
+        what: pinheaders
+        where:
+          shift: [110, 8]
+          rotate: 90
+        params:
+          T1: T1
+          T2: T2
+          T3: T3
+          T4: T4
+      choc_hotswap:
+        what: choc
+        where: true
+        params:
+          from: "{{column_net}}"
+          to: GND
+          keycaps: true
+          reverse: true
+          hotswap: true
+      promicro:
+        what: elite
+        where:
+          ref: matrix_inner_home
+          shift: [19, 7.5]
+          rotate: -90
+        params:
+          orientation: down
+      reset:
+        what: button
+        where:
+          ref: matrix_inner_home
+          shift: [32, 3]
+          rotate: -90
+        params:
+          to: ST
+          from: GND
+          variant: 2_pin_th
+      trackpadHoleTop:
+        what: trackpad_hole
+        where:
+          shift: [117, 19]
+      trackpadHoleBottomRight:
+        what: trackpad_hole
+        where:
+          shift: [117, -7]
+      trackpadHoleBottomLeft:
+        what: trackpad_hole
+        where:
+          shift: [105, -3]
+      holeTopInnerLeft:
+        what: mountinghole
+        where:
+          ref: [matrix_index_home]
+          shift: [9, 10]
+      holeTopRight:
+        what: mountinghole
+        where:
+          ref: [matrix_ring_home]
+          shift: [-9.9, -2]
+      holeTopInnerRight:
+        what: mountinghole
+        where:
+          ref: [matrix_index_home]
+          shift: [-15, -31]
+      rotary:
+        what: rotary
+        where:
+          ref: matrix_inner_home
+          shift: [19, -20]
+          rotate: -180
+        params:
+          from: O1
+          to: O2
+          A: O3
+          B: O5
+          C: O4
+      trrs:
+        what: trrs
+        where:
+          ref: matrix_inner_home
+          shift: [34.25, 22]
+        params:
+          A: GND
+          B: GND
+          C: F6
+          D: VCC
+          reverse: true
+          symmetric: true
