@@ -4,6 +4,9 @@ units:
   choc_cap_y: 16.5
   spread: 20
 
+  screwSize: 1.5
+  standoffSize: 2.5
+
   choc_plate_thickness: 1.2
   mx_plate_thickness: 1.5
 points:
@@ -127,11 +130,87 @@ points:
       key:
         footprints:
 cases:
+  _holes:
+    - name: mounting
+      extrude: 4
+  _standoffs:
+    - name: standoff
+      extrude: 4
+  bottom:
+    - what: outline
+      name: raw
+      extrude: 1
   switchplate:
     - what: outline
       name: switch_plate
       extrude: choc_plate_thickness
+  case:
+    - what: case
+      name: _standoffs
+      operation: add
+    - what: case
+      name: _holes
+      operation: subtract
+    - what: case
+      name: bottom
+      operation: add
 outlines:
+  standoff:
+    - what: circle
+      radius: standoffSize
+      where:
+        shift: [117, 19]
+    - what: circle
+      radius: standoffSize
+      where:
+          shift: [117, -7]
+    - what: circle
+      radius: standoffSize
+      where:
+          shift: [105, -3]
+    - what: circle
+      radius: standoffSize
+      where:
+          ref: [matrix_index_home]
+          shift: [9, 10]
+    - what: circle
+      radius: standoffSize
+      where:
+          ref: [matrix_ring_home]
+          shift: [-9.9, -2]
+    - what: circle
+      radius: standoffSize
+      where:
+          ref: [matrix_index_home]
+          shift: [-15, -31]
+  mounting:
+    - what: circle
+      radius: screwSize
+      where:
+        shift: [117, 19]
+    - what: circle
+      radius: screwSize
+      where:
+          shift: [117, -7]
+    - what: circle
+      radius: screwSize
+      where:
+          shift: [105, -3]
+    - what: circle
+      radius: screwSize
+      where:
+          ref: [matrix_index_home]
+          shift: [9, 10]
+    - what: circle
+      radius: screwSize
+      where:
+          ref: [matrix_ring_home]
+          shift: [-9.9, -2]
+    - what: circle
+      radius: screwSize
+      where:
+          ref: [matrix_index_home]
+          shift: [-15, -31]
   _switch_cutouts:
     - what: rectangle
       where: true
