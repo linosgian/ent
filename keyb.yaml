@@ -1,3 +1,4 @@
+---
 units:
   # Constants
   choc_cap_x: 17.5
@@ -20,13 +21,13 @@ points:
           rows:
             bottom:
               bind: [5, 0, 0, 1]
-              column_net: B6
+              column_net: IO21
             home:
               bind: [0, 12, 0, 1]
-              column_net: F0
+              column_net: IO16
             top:
               bind: [0, 8, 5, 1]
-              column_net: F1
+              column_net: IO15
         ring:
           key:
             spread: spread
@@ -35,13 +36,13 @@ points:
           rows:
             bottom:
               bind: [0, 0, 2, 10]
-              column_net: C7
+              column_net: IO12
             home:
               bind: [5, 0, 5, 0]
-              column_net: D5
+              column_net: IO13
             top:
               bind: [0, 6, 0, 1]
-              column_net: B7
+              column_net: IO14
         middle:
           key:
             shift: [0.2, 0]
@@ -51,13 +52,13 @@ points:
           rows:
             bottom:
               bind: [0, 10, 15, 5]
-              column_net: E6
+              column_net: IO7
             home:
               bind: 5
-              column_net: D4
+              column_net: IO4
             top:
               bind: [0, 1, 0, 1]
-              column_net: F7
+              column_net: A1
         index:
           key:
             stagger: -17/3
@@ -66,28 +67,28 @@ points:
           rows:
             bottom:
               bind: [0, 5, 5, 0]
-              column_net: B4
+              column_net: IO8
             home:
               bind: [5, 0, 5, 0]
-              column_net: C6
+              column_net: IO5
             top:
               bind: [0, 0, 0, 6]
-              column_net: D2
+              column_net: IO10
         inner:
           key:
             stagger: -17/6
             origin: [0, -17]
             spread: spread
-          rows: 
+          rows:
             bottom:
               bind: [5, 32, 20, 2]
-              column_net: B5
+              column_net: IO9
             home:
               bind: [0, 27, 0, 5]
-              column_net: D7
+              column_net: IO6
             top:
               bind: [0, 27, 5, 5]
-              column_net: F6
+              column_net: RX
       rows:
         bottom:
           padding: 19
@@ -97,14 +98,14 @@ points:
     thumb:
       anchor:
         ref: matrix_inner_bottom
-        shift: [2,-32]
+        shift: [2, -32]
       columns:
         first:
           key:
             splay: -1
           rows:
             only:
-              column_net: F4
+              column_net: A3
               bind: [12, 0, 0, 0]
         second:
           key:
@@ -113,8 +114,8 @@ points:
             origin: [-10, -15.5]
           rows:
             only:
-              column_net: F5
-              bind: [10,0, 1, 95]
+              column_net: A2
+              bind: [10, 0, 1, 95]
         third:
           key:
             rotate: -30
@@ -122,7 +123,7 @@ points:
             origin: [10, 10]
           rows:
             only:
-              column_net: F7
+              column_net: A0
               bind: [4, 1, 1.5, 10]
       rows:
         only:
@@ -138,7 +139,7 @@ cases:
       extrude: 4
   bottom:
     - what: outline
-      name: raw
+      name: panel
       extrude: 1
   switchplate:
     - what: outline
@@ -163,26 +164,26 @@ outlines:
     - what: circle
       radius: standoffSize
       where:
-          shift: [117, -7]
+        shift: [117, -7]
     - what: circle
       radius: standoffSize
       where:
-          shift: [105, -3]
+        shift: [105, -3]
     - what: circle
       radius: standoffSize
       where:
-          ref: [matrix_index_home]
-          shift: [9, 10]
+        ref: [matrix_index_home]
+        shift: [9, 10]
     - what: circle
       radius: standoffSize
       where:
-          ref: [matrix_ring_home]
-          shift: [-9.9, -2]
+        ref: [matrix_ring_home]
+        shift: [-9.9, -2]
     - what: circle
       radius: standoffSize
       where:
-          ref: [matrix_index_home]
-          shift: [-15, -31]
+        ref: [matrix_index_home]
+        shift: [-15, -31]
   mounting:
     - what: circle
       radius: screwSize
@@ -191,45 +192,45 @@ outlines:
     - what: circle
       radius: screwSize
       where:
-          shift: [117, -7]
+        shift: [117, -7]
     - what: circle
       radius: screwSize
       where:
-          shift: [105, -3]
+        shift: [105, -3]
     - what: circle
       radius: screwSize
       where:
-          ref: [matrix_index_home]
-          shift: [9, 10]
+        ref: [matrix_index_home]
+        shift: [9, 10]
     - what: circle
       radius: screwSize
       where:
-          ref: [matrix_ring_home]
-          shift: [-9.9, -2]
+        ref: [matrix_ring_home]
+        shift: [-9.9, -2]
     - what: circle
       radius: screwSize
       where:
-          ref: [matrix_index_home]
-          shift: [-15, -31]
+        ref: [matrix_index_home]
+        shift: [-15, -31]
   _switch_cutouts:
     - what: rectangle
       where: true
       asym: source
-      size: 14 # Plate cutouts are 14mm * 14mm for both MX and Choc
+      size: 14  # Plate cutouts are 14mm * 14mm for both MX and Choc
       bound: false
   raw:
     - what: rectangle
       where: true
       bound: true
       asym: left
-      size: [18,17]
+      size: [18, 17]
       corner: 1
   panel:
     - what: outline
       name: raw
       fillet: 2.5
   switch_plate:
-    [ raw, -_switch_cutouts]
+    [raw, -_switch_cutouts]
 pcbs:
   pcb:
     outlines:
@@ -247,7 +248,7 @@ pcbs:
           rotate: 90
         params:
           from: O2
-          to: B2
+          to: IO23
       fpad2:
         what: jumper
         where:
@@ -255,7 +256,7 @@ pcbs:
           rotate: 90
         params:
           from: O5
-          to: B3
+          to: IO20
       fpad3:
         what: jumper
         where:
@@ -271,7 +272,7 @@ pcbs:
           rotate: 90
         params:
           from: O3
-          to: B1
+          to: IO22
       pad:
         what: jumper
         where:
@@ -297,7 +298,7 @@ pcbs:
           rotate: 90
         params:
           from: T3
-          to: D0
+          to: IO3
           side: B
       pad4:
         what: jumper
@@ -306,7 +307,7 @@ pcbs:
           rotate: 90
         params:
           from: T4
-          to: D1
+          to: IO2
           side: B
       trackpad_headers:
         what: pinheaders
@@ -327,12 +328,138 @@ pcbs:
           keycaps: true
           reverse: true
           hotswap: true
+      underglow_ring_top:
+        what: rgb
+        where:
+          ref: matrix_ring_top
+          shift: [0, -6]
+        params:
+          VCC: RAW
+          GND: GND
+          din: RGB2
+          dout: RGB3
+      underglow_ring_bottom:
+        what: rgb
+        where:
+          shift: [0, -6]
+          ref: matrix_ring_bottom
+        params:
+          VCC: RAW
+          GND: GND
+          din: RGB3
+          dout: RGB4
+      underglow_middle_top:
+        what: rgb
+        where:
+          shift: [0, -6]
+          ref: matrix_middle_top
+        params:
+          VCC: RAW
+          GND: GND
+          din: RGB1
+          dout: RGB2
+      underglow_middle_bottom:
+        what: rgb
+        where:
+          shift: [0, -6]
+          ref: matrix_middle_bottom
+        params:
+          VCC: RAW
+          GND: GND
+          din: RGB4
+          dout: RGB5
+      underglow_inner_top:
+        what: rgb
+        where:
+          shift: [0, -6]
+          ref: matrix_inner_top
+        params:
+          VCC: RAW
+          GND: GND
+          din: A0
+          dout: RGB1
+      underglow_inner_bottom:
+        what: rgb
+        where:
+          shift: [0, -6]
+          ref: matrix_inner_bottom
+        params:
+          VCC: RAW
+          GND: GND
+          din: RGB5
+          dout: NAN
+      bunderglow_ring_top:
+        what: rgb
+        where:
+          ref: matrix_ring_top
+          shift: [0, -6]
+        params:
+          side: B
+          VCC: RAW
+          GND: GND
+          din: RGB2
+          dout: RGB3
+      bunderglow_ring_bottom:
+        what: rgb
+        where:
+          shift: [0, -6]
+          ref: matrix_ring_bottom
+        params:
+          VCC: RAW
+          side: B
+          GND: GND
+          din: RGB3
+          dout: RGB4
+      bunderglow_middle_top:
+        what: rgb
+        where:
+          shift: [0, -6]
+          ref: matrix_middle_top
+        params:
+          VCC: RAW
+          side: B
+          GND: GND
+          din: RGB1
+          dout: RGB2
+      bunderglow_middle_bottom:
+        what: rgb
+        where:
+          shift: [0, -6]
+          ref: matrix_middle_bottom
+        params:
+          VCC: RAW
+          side: B
+          GND: GND
+          din: RGB4
+          dout: RGB5
+      bunderglow_inner_top:
+        what: rgb
+        where:
+          shift: [0, -6]
+          ref: matrix_inner_top
+        params:
+          VCC: RAW
+          side: B
+          GND: GND
+          din: A0
+          dout: RGB1
+      bunderglow_inner_bottom:
+        what: rgb
+        where:
+          shift: [0, -6]
+          ref: matrix_inner_bottom
+        params:
+          VCC: RAW
+          side: B
+          GND: GND
+          din: RGB5
+          dout: NAN
       promicro:
-        what: elite
+        what: helios
         where:
           ref: matrix_inner_home
           shift: [19, 7.5]
-          rotate: -90
+          rotate: 0
         params:
           orientation: down
       reset:
@@ -342,7 +469,7 @@ pcbs:
           shift: [32, 3]
           rotate: -90
         params:
-          to: ST
+          to: RST
           from: GND
           variant: 2_pin_th
       trackpadHoleTop:
@@ -392,7 +519,7 @@ pcbs:
         params:
           A: GND
           B: GND
-          C: D3
+          C: TX
           D: VCC
           reverse: true
           symmetric: true
