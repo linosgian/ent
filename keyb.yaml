@@ -334,7 +334,7 @@ pcbs:
           ref: matrix_ring_top
           shift: [0, -6]
         params:
-          VCC: RAW
+          VCC: RGB
           GND: GND
           din: RGB2
           dout: RGB3
@@ -344,7 +344,7 @@ pcbs:
           shift: [0, -6]
           ref: matrix_ring_bottom
         params:
-          VCC: RAW
+          VCC: RGB
           GND: GND
           din: RGB3
           dout: RGB4
@@ -354,7 +354,7 @@ pcbs:
           shift: [0, -6]
           ref: matrix_middle_top
         params:
-          VCC: RAW
+          VCC: RGB
           GND: GND
           din: RGB1
           dout: RGB2
@@ -364,7 +364,7 @@ pcbs:
           shift: [0, -6]
           ref: matrix_middle_bottom
         params:
-          VCC: RAW
+          VCC: RGB
           GND: GND
           din: RGB4
           dout: RGB5
@@ -374,7 +374,7 @@ pcbs:
           shift: [0, -6]
           ref: matrix_inner_top
         params:
-          VCC: RAW
+          VCC: RGB
           GND: GND
           din: A0
           dout: RGB1
@@ -384,7 +384,7 @@ pcbs:
           shift: [0, -6]
           ref: matrix_inner_bottom
         params:
-          VCC: RAW
+          VCC: RGB
           GND: GND
           din: RGB5
           dout: NAN
@@ -395,7 +395,7 @@ pcbs:
           shift: [0, -6]
         params:
           side: B
-          VCC: RAW
+          VCC: RGB
           GND: GND
           din: RGB2
           dout: RGB3
@@ -405,7 +405,7 @@ pcbs:
           shift: [0, -6]
           ref: matrix_ring_bottom
         params:
-          VCC: RAW
+          VCC: RGB
           side: B
           GND: GND
           din: RGB3
@@ -416,7 +416,7 @@ pcbs:
           shift: [0, -6]
           ref: matrix_middle_top
         params:
-          VCC: RAW
+          VCC: RGB
           side: B
           GND: GND
           din: RGB1
@@ -427,7 +427,7 @@ pcbs:
           shift: [0, -6]
           ref: matrix_middle_bottom
         params:
-          VCC: RAW
+          VCC: RGB
           side: B
           GND: GND
           din: RGB4
@@ -438,7 +438,7 @@ pcbs:
           shift: [0, -6]
           ref: matrix_inner_top
         params:
-          VCC: RAW
+          VCC: RGB
           side: B
           GND: GND
           din: A0
@@ -449,7 +449,7 @@ pcbs:
           shift: [0, -6]
           ref: matrix_inner_bottom
         params:
-          VCC: RAW
+          VCC: RGB
           side: B
           GND: GND
           din: RGB5
