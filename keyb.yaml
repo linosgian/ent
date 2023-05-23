@@ -98,7 +98,7 @@ points:
     thumb:
       anchor:
         ref: matrix_inner_bottom
-        shift: [2, -32]
+        shift: [-8, -32]
       columns:
         first:
           key:
@@ -124,7 +124,7 @@ points:
           rows:
             only:
               column_net: A0
-              bind: [4, 1, 1.5, 10]
+              bind: [8.5, 1, 1.5, 10]
       rows:
         only:
           padding: 17
@@ -156,6 +156,12 @@ cases:
       name: bottom
       operation: add
 outlines:
+  footprints:
+    - what: rectangle
+      size: [32, 63.544]
+      where:
+        ref: matrix_inner_home
+        shift: [25, 7.5]
   standoff:
     - what: circle
       radius: standoffSize
@@ -230,7 +236,7 @@ outlines:
       name: raw
       fillet: 2.5
   switch_plate:
-    [raw, -_switch_cutouts]
+    [panel, -footprints, -mounting, -_switch_cutouts]
 pcbs:
   pcb:
     outlines:
