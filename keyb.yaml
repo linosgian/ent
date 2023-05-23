@@ -20,13 +20,10 @@ points:
             spread: spread
           rows:
             bottom:
-              bind: [5, 0, 0, 1]
               column_net: IO21
             home:
-              bind: [0, 12, 0, 1]
               column_net: IO16
             top:
-              bind: [0, 8, 5, 1]
               column_net: IO15
         ring:
           key:
@@ -35,13 +32,10 @@ points:
             origin: [0, -17]
           rows:
             bottom:
-              bind: [0, 0, 2, 10]
               column_net: IO12
             home:
-              bind: [5, 0, 5, 0]
               column_net: IO13
             top:
-              bind: [0, 6, 0, 1]
               column_net: IO14
         middle:
           key:
@@ -51,13 +45,10 @@ points:
             origin: [0, -17]
           rows:
             bottom:
-              bind: [0, 10, 15, 5]
               column_net: IO7
             home:
-              bind: 5
               column_net: IO4
             top:
-              bind: [0, 1, 0, 1]
               column_net: A1
         index:
           key:
@@ -66,13 +57,10 @@ points:
             spread: spread
           rows:
             bottom:
-              bind: [0, 5, 5, 0]
               column_net: IO8
             home:
-              bind: [5, 0, 5, 0]
               column_net: IO5
             top:
-              bind: [0, 0, 0, 6]
               column_net: IO10
         inner:
           key:
@@ -81,13 +69,10 @@ points:
             spread: spread
           rows:
             bottom:
-              bind: [5, 32, 20, 2]
               column_net: IO9
             home:
-              bind: [0, 27, 0, 5]
               column_net: IO6
             top:
-              bind: [0, 27, 5, 5]
               column_net: RX
       rows:
         bottom:
@@ -106,7 +91,6 @@ points:
           rows:
             only:
               column_net: A3
-              bind: [12, 0, 0, 0]
         second:
           key:
             spread: 18
@@ -115,7 +99,6 @@ points:
           rows:
             only:
               column_net: A2
-              bind: [10, 0, 1, 95]
         third:
           key:
             rotate: -30
@@ -124,7 +107,6 @@ points:
           rows:
             only:
               column_net: A0
-              bind: [4, 1, 1.5, 10]
       rows:
         only:
           padding: 17
@@ -139,7 +121,7 @@ cases:
       extrude: 4
   bottom:
     - what: outline
-      name: panel
+      name: board_outline
       extrude: 1
   switchplate:
     - what: outline
@@ -184,6 +166,69 @@ outlines:
       where:
         ref: [matrix_index_home]
         shift: [-15, -31]
+  board_outline:
+    - what: polygon
+      points:
+        - ref: thumb_third_only
+          shift: [0.6cx, 0.6cy]
+        - ref: thumb_third_only
+          shift: [0.6cx, -0.6cy]
+        - ref: thumb_third_only
+          shift: [-0.4cx, -0.6cy]
+
+        - ref: thumb_first_only
+          shift: [0.5cx, -0.6cy]
+        - ref: thumb_first_only
+          shift: [-0.5cx, -0.6cy]
+
+        - ref: matrix_pinky_bottom
+          shift: [0.6cx, -0.6cy]
+        - ref: matrix_pinky_bottom
+          shift: [-0.6cx, -0.6cy]
+        - ref: matrix_pinky_top
+          shift: [-0.6cx, 0.6cy]
+        - ref: matrix_pinky_top
+          shift: [0.5cx, 0.6cy]
+
+        - ref: matrix_ring_top
+          shift: [-0.6cx, 0.6cy]
+        - ref: matrix_ring_top
+          shift: [0.5cx, 0.6cy]
+
+        - ref: matrix_middle_top
+          shift: [-0.5cx, 0.61cy]
+        - ref: matrix_middle_top
+          shift: [0.5cx, 0.6cy]
+
+        - ref: matrix_index_top
+          shift: [-0.4cx, 0.6cy]
+        - ref: matrix_index_top
+          shift: [0.5cx, 0.6cy]
+
+        - ref: matrix_inner_top
+          shift: [-0.4cx, 0.6cy]
+        - ref: matrix_inner_top
+          shift: [0.5cx, 0.6cy]
+
+
+        - ref: matrix_inner_top
+          shift: [0.6cx, 0.4cy]
+        - ref: matrix_inner_top
+          shift: [2.0cx, 0.4cy]
+
+        - ref: matrix_inner_home
+          shift: [2.0cx, -0.3cy]
+
+        - ref: matrix_inner_home
+          shift: [2.3cx, -0.3cy]
+
+        - ref: matrix_inner_bottom
+          shift: [2.3cx, -0.6cy]
+        - ref: thumb_third_only
+          shift: [-0.6cx, 0.8cy]
+        - ref: thumb_third_only
+          shift: [0.6cx, 0.8cy]
+
   mounting:
     - what: circle
       radius: screwSize
@@ -225,17 +270,30 @@ outlines:
       asym: left
       size: [18, 17]
       corner: 1
+  _keycap_outlines:
+    - what: rectangle
+      fillet: 2
+      where: true
+      size: [1cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
+  all:
+    - what: outline
+      name: _keycap_outlines
+      operation: stack
+    - what: outline
+      name: board_outline
+      operation: stack
+      fillet: 2
   panel:
     - what: outline
       name: raw
       fillet: 2.5
   switch_plate:
-    [raw, -_switch_cutouts]
+    [board_outline, -_switch_cutouts]
 pcbs:
   pcb:
     outlines:
       main:
-        outline: panel
+        outline: board_outline
     footprints:
       trackpad:
         what: cirque
