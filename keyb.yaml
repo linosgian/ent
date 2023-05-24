@@ -109,7 +109,7 @@ points:
               bind: [12, 0, 0, 0]
         second:
           key:
-            spread: 15
+            spread: 17
             splay: -15
             origin: [-10, -15.5]
           rows:
@@ -119,7 +119,7 @@ points:
         third:
           key:
             rotate: -30
-            spread: 15
+            spread: 17
             splay: 17
             origin: [10, 10]
           rows:
@@ -155,6 +155,16 @@ cases:
       operation: subtract
     - what: case
       name: bottom
+      operation: add
+
+  preview:
+    - what: outline
+      name: panel
+      extrude: 3
+      operation: subtract
+    - what: outline
+      name: _keycap_outlines
+      extrude: 6
       operation: add
 outlines:
   footprints:
@@ -219,6 +229,11 @@ outlines:
       where:
         ref: [matrix_index_home]
         shift: [-15, -31]
+  _keycap_outlines:
+    - what: rectangle
+      fillet: 2
+      where: true
+      size: [1cx - 0.5, 1cy - 0.5] # Choc keycaps are 17.5 x 16.5
   _switch_cutouts:
     - what: rectangle
       where: true
@@ -236,6 +251,13 @@ outlines:
     - what: outline
       name: raw
       fillet: 2.5
+  preview:
+    - what: outline
+      name: panel
+      operation: stack
+    - what: outline
+      name: _keycap_outlines
+      operation: stack
   switch_plate:
     [panel, -footprints, -mounting, -_switch_cutouts]
 pcbs:
