@@ -58,7 +58,7 @@ points:
               column_net: IO4
             top:
               bind: [0, 1, 0, 1]
-              column_net: A1
+              column_net: IO11
         index:
           key:
             stagger: -17/3
@@ -81,7 +81,7 @@ points:
             spread: spread
           rows:
             bottom:
-              bind: [5, 32, 20, 2]
+              bind: [5, 37, 20, 2]
               column_net: IO9
             home:
               bind: [0, 27, 0, 5]
@@ -106,7 +106,7 @@ points:
           rows:
             only:
               column_net: A3
-              bind: [12, 0, 0, 0]
+              bind: [12, 45, 0, 0]
         second:
           key:
             spread: 17
@@ -125,7 +125,7 @@ points:
           rows:
             only:
               column_net: A0
-              bind: [11, 1, 1.5, 10]
+              bind: [0.2, 2.6, 1.5, 10]
       rows:
         only:
           padding: 17
@@ -169,10 +169,10 @@ cases:
 outlines:
   footprints:
     - what: rectangle
-      size: [32, 63.544]
+      size: [42, 63.544]
       where:
         ref: matrix_inner_home
-        shift: [25, 7.5]
+        shift: [30, 7.5]
   standoff:
     - what: circle
       radius: standoffSize
@@ -266,10 +266,42 @@ pcbs:
       main:
         outline: panel
     footprints:
-      trackpad:
-        what: cirque
+      i2c_resistor:
+        what: smd_resistor
         where:
-          shift: [115, 10.5]
+          shift: [114, 5]
+        params:
+          from: T2
+          side: "B"
+          to: T3
+      i2c_resistor2:
+        what: smd_resistor
+        where:
+          shift: [114, 2]
+        params:
+          side: "B"
+          from: T2
+          to: T4
+      i2c_resistor3:
+        what: smd_resistor
+        where:
+          shift: [114, -1]
+        params:
+          side: "B"
+          from: T2
+          to: T5
+      i2c_resistor4:
+        what: smd_resistor
+        where:
+          shift: [114, -4]
+        params:
+          side: "B"
+          from: T2
+          to: T6
+      trackpad:
+        what: azoteq_tps43
+        where:
+          shift: [138, 30.5]
       fpad:
         what: jumper
         where:
@@ -338,6 +370,24 @@ pcbs:
           from: T4
           to: IO2
           side: B
+      pad5:
+        what: jumper
+        where:
+          shift: [119, 12]
+          rotate: 90
+        params:
+          from: T5
+          to: IO23
+          side: B
+      pad6:
+        what: jumper
+        where:
+          shift: [121, 12]
+          rotate: 90
+        params:
+          from: T6
+          to: IO20
+          side: B
       trackpad_headers:
         what: pinheaders
         where:
@@ -348,6 +398,8 @@ pcbs:
           T2: T2
           T3: T3
           T4: T4
+          T5: T5
+          T6: T6
       choc_hotswap:
         what: choc
         where: true
@@ -405,7 +457,7 @@ pcbs:
         params:
           VCC: RGB
           GND: GND
-          din: A0
+          din: A1
           dout: RGB1
       underglow_inner_bottom:
         what: rgb
@@ -470,7 +522,7 @@ pcbs:
           VCC: RGB
           side: B
           GND: GND
-          din: A0
+          din: IO22
           dout: RGB1
       bunderglow_inner_bottom:
         what: rgb
@@ -504,11 +556,11 @@ pcbs:
       trackpadHoleTop:
         what: trackpad_hole
         where:
-          shift: [117, 19]
+          shift: [121, 19]
       trackpadHoleBottomRight:
         what: trackpad_hole
         where:
-          shift: [117, -7]
+          shift: [122, -7]
       trackpadHoleBottomLeft:
         what: trackpad_hole
         where:
