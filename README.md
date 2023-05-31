@@ -10,7 +10,7 @@ left | right
 
 ## Features
 
-* Support for a [cirque](https://keycapsss.com/keyboard-parts/parts/211/glidepoint-cirque-trackpad-tm040040-tm035035?c=11) trackpad on the right side (solderable jumpers)
+* Support for a [cirque](https://keycapsss.com/keyboard-parts/parts/211/glidepoint-cirque-trackpad-tm040040-tm035035?c=11) and [Azoteq](https://keycapsss.com/keyboard-parts/parts/247/azoteq-proxsense-i2c-touch-sensor-module/capacitive-trackpad) trackpads on the right side (solderable jumpers)
 * Support for a rotary encoder on the left side (solderable jumpers)
 * Uses elite-c (or equivalent like puchi-c) so more io pins are available
 * No diodes (less complexity during soldering)
