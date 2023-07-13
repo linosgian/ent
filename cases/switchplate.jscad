@@ -9,7 +9,7 @@ function switch_plate_extrude_1_2_outline_fn(){
 ).union(
     CAG.circle({"center":[105,-3],"radius":1.5})
 ).union(
-    CAG.circle({"center":[117,-7],"radius":1.5})
+    CAG.circle({"center":[122,-7],"radius":1.5})
 ).union(
     new CSG.Path2D([[64.8788993,-29.7101003],[78.876767,-29.954434]]).appendPoint([79.1211007,-15.9565663]).appendPoint([65.123233,-15.7122326]).appendPoint([64.8788993,-29.7101003]).close().innerToCAG()
 ).union(

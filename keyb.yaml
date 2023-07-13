@@ -132,12 +132,12 @@ points:
       key:
         footprints:
 cases:
+  standoffs:
+    - name: standoffs
+      extrude: 8
   _holes:
     - name: mounting
-      extrude: 4
-  _standoffs:
-    - name: standoff
-      extrude: 4
+      extrude: 1
   bottom:
     - what: outline
       name: panel
@@ -148,13 +148,13 @@ cases:
       extrude: choc_plate_thickness
   case:
     - what: case
-      name: _standoffs
+      name: bottom
       operation: add
     - what: case
       name: _holes
       operation: subtract
     - what: case
-      name: bottom
+      name: standoffs
       operation: add
 
   preview:
@@ -173,43 +173,46 @@ outlines:
       where:
         ref: matrix_inner_home
         shift: [30, 7.5]
-  standoff:
+  standoffs:
     - what: circle
       radius: standoffSize
       where:
-        shift: [117, 19]
+        ref: [thumb_third_only]
+        shift: [8,10]
     - what: circle
       radius: standoffSize
       where:
-        shift: [117, -7]
+        ref: [thumb_first_only]
+        shift: [-12,5]
     - what: circle
       radius: standoffSize
       where:
-        shift: [105, -3]
+        ref: [matrix_pinky_bottom]
+        shift: [12,-5]
     - what: circle
       radius: standoffSize
       where:
-        ref: [matrix_index_home]
-        shift: [9, 10]
+        ref: [matrix_pinky_bottom]
+        shift: [-7, 10]
     - what: circle
       radius: standoffSize
       where:
-        ref: [matrix_ring_home]
-        shift: [-9.9, -2]
+        ref: [matrix_ring_top]
+        shift: [-10, -7]
     - what: circle
       radius: standoffSize
       where:
-        ref: [matrix_index_home]
-        shift: [-15, -31]
+        ref: [matrix_middle_top]
+        shift: [-10, 0]
   mounting:
     - what: circle
       radius: screwSize
       where:
-        shift: [117, 19]
+        shift: [121, 19]
     - what: circle
       radius: screwSize
       where:
-        shift: [117, -7]
+        shift: [122, -7]
     - what: circle
       radius: screwSize
       where:
