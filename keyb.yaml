@@ -167,6 +167,26 @@ cases:
       extrude: 6
       operation: add
 outlines:
+  switchplate_cutout:
+    - what: rectangle
+      size: [55, 35]
+      corner: 2
+      where:
+        ref: thumb_first_only
+        shift: [-36, 7.5]
+  switchplate_cutout_2:
+    - what: rectangle
+      size: [20, 10]
+      where:
+        ref: matrix_pinky_bottom
+        shift: [0, -13]
+  switchplate_cutout_3:
+    - what: rectangle
+      size: [20, 10]
+      corner: 1
+      where:
+        ref: matrix_middle_bottom
+        shift: [0, -15]
   footprints:
     - what: rectangle
       size: [42, 63.544]
@@ -277,7 +297,7 @@ outlines:
       name: _keycap_outlines
       operation: stack
   switch_plate:
-    [panel, -footprints, -mounting, -_switch_cutouts]
+    [panel, -footprints, -mounting, -_switch_cutouts, -switchplate_cutout, -switchplate_cutout_2, -switchplate_cutout_3]
 pcbs:
   pcb:
     outlines:
