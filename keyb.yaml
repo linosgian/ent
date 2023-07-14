@@ -204,6 +204,21 @@ outlines:
       where:
         ref: [matrix_middle_top]
         shift: [-10, 0]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [matrix_inner_top]
+        shift: [33, 5]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [matrix_inner_top]
+        shift: [22, -7]
+    - what: circle
+      radius: standoffSize
+      where:
+        ref: [matrix_inner_bottom]
+        shift: [43, 5]
   mounting:
     - what: circle
       radius: screwSize
