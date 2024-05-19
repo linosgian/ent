@@ -596,7 +596,7 @@ pcbs:
         what: trrs
         where:
           ref: matrix_inner_home
-          shift: [34.25, 22]
+          shift: [34.25, 27]
         params:
           A: GND
           B: GND
